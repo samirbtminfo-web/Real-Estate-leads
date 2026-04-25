@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>রিয়েল এস্টেট - ফ্রি কনসালটেশন</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --dark: #0D0D0D;
+    --dark2: #161616;
+    --dark3: #1E1E1E;
+    --text: #F0EDE8;
+    --text-muted: #9A9080;
+    --border: rgba(201,168,76,0.25);
+    --success: #4CAF82;
+  }
+
+  body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-pattern {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 90%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.015) 40px, rgba(201,168,76,0.015) 41px);
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+  }
+
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  h1 span { color: var(--gold); }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  @media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
+
+  .feature-item {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .feature-icon { font-size: 24px; margin-bottom: 8px; }
+  .feature-text { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+  .feature-text strong { color: var(--text); display: block; font-size: 14px; margin-bottom: 2px; }
+
+  .form-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    animation: fadeUp 0.8s 0.2s ease both;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+
+  .form-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .form-title::before {
+    content: '';
+    width: 4px; height: 24px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+    border-radius: 2px;
+  }
+
+  .field-group { display: flex; flex-direction: column; gap: 20px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  label span.req { color: var(--gold); margin-left: 2px; }
+
+  input, select, textarea {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+
+  select option { background: var(--dark2); }
+  textarea { resize: vertical; min-height: 90px; }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 500px) { .row { grid-template-columns: 1fr; } }
+
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+
+  .checkbox-item {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .checkbox-item:hover { border-color: var(--gold); }
+  .checkbox-item input[type="checkbox"] { display: none; }
+
+  .check-icon {
+    width: 18px; height: 18px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    font-size: 11px;
+  }
+
+  .checkbox-item.checked { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+  .checkbox-item.checked .check-icon { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 28px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 12px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,0.35); }
+  .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+  .spinner {
+    width: 20px; height: 20px;
+    border: 3px solid rgba(0,0,0,0.2);
+    border-top-color: var(--dark);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+
+  .privacy-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+  .privacy-note span { color: var(--gold); }
+
+  /* Success */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 64px 40px;
+    background: var(--dark2);
+    border: 1px solid rgba(76,175,130,0.3);
+    border-radius: 20px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .success-icon {
+    width: 84px; height: 84px;
+    background: rgba(76,175,130,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px;
+    margin: 0 auto 24px;
+    border: 2px solid rgba(76,175,130,0.4);
+  }
+
+  .success-screen h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; color: var(--success); }
+  .success-screen p { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+
+  .new-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 32px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--gold);
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .new-btn:hover { background: rgba(201,168,76,0.1); }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 30px; left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #c0392b;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 999;
+    transition: transform 0.3s;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeUp   { from { opacity:0; transform:translateY(20px);  } to { opacity:1; transform:translateY(0); } }
+  @keyframes pulse    { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  @keyframes spin     { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+<div class="toast" id="toast"></div>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">🏠 রিয়েল এস্টেট লিড ফর্ম</div>
+    <h1>আপনার স্বপ্নের<br><span>সম্পত্তি খুঁজুন</span></h1>
+    <p class="subtitle">ফ্রি কনসালটেশন পান। আমাদের বিশেষজ্ঞ দল আপনার বাজেট ও পছন্দ অনুযায়ী সেরা অপশন দেখাবে।</p>
+  </div>
+
+  <!-- Features -->
+  <div class="features">
+    <div class="feature-item">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-text"><strong>১০০% ফ্রি</strong>কোনো চার্জ নেই</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-text"><strong>দ্রুত রেসপন্স</strong>২৪ ঘণ্টার মধ্যে</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-text"><strong>সম্পূর্ণ সুরক্ষিত</strong>তথ্য গোপন থাকবে</div>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="form-card" id="formCard">
+    <div class="form-title">আপনার তথ্য দিন</div>
+
+    <div class="field-group">
+
+      <div class="field">
+        <label>পূর্ণ নাম <span class="req">*</span></label>
+        <input type="text" id="name" placeholder="আপনার নাম লিখুন" />
+      </div>
+
+      <div class="field">
+        <label>মোবাইল নম্বর <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="01XXXXXXXXX" maxlength="11" />
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>জেলা <span class="req">*</span></label>
+          <select id="district">
+            <option value="">জেলা বেছে নিন</option>
+            <option>ঢাকা</option><option>চট্টগ্রাম</option><option>সিলেট</option>
+            <option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option>
+            <option>ময়মনসিংহ</option><option>রংপুর</option><option>কুমিল্লা</option>
+            <option>গাজীপুর</option><option>নারায়ণগঞ্জ</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>এলাকা</label>
+          <input type="text" id="area" placeholder="যেমন: গুলশান, ধানমন্ডি" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>কী ধরনের সম্পত্তি চান? <span class="req">*</span></label>
+        <div class="checkbox-group" id="propTypes">
+          <div class="checkbox-item" data-value="ফ্ল্যাট/অ্যাপার্টমেন্ট" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>🏢 ফ্ল্যাট</span>
+          </div>
+          <div class="checkbox-item" data-value="জমি/প্লট" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>🌿 জমি/প্লট</span>
+          </div>
+          <div class="checkbox-item" data-value="বাড়ি/ভিলা" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>🏡 বাড়ি</span>
+          </div>
+          <div class="checkbox-item" data-value="কমার্শিয়াল" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>🏬 কমার্শিয়াল</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>উদ্দেশ্য <span class="req">*</span></label>
+        <select id="purpose">
+          <option value="">উদ্দেশ্য বেছে নিন</option>
+          <option>কেনা (Buy)</option>
+          <option>ভাড়া নেওয়া (Rent)</option>
+          <option>বিনিয়োগ (Investment)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>বাজেট রেঞ্জ</label>
+        <select id="budget">
+          <option value="">বাজেট বেছে নিন</option>
+          <option>৫ লক্ষের নিচে</option>
+          <option>৫ - ২০ লক্ষ</option>
+          <option>২০ - ৫০ লক্ষ</option>
+          <option>৫০ লক্ষ - ১ কোটি</option>
+          <option>১ কোটি - ৫ কোটি</option>
+          <option>৫ কোটির উপরে</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>বিশেষ চাহিদা (ঐচ্ছিক)</label>
+        <textarea id="message" placeholder="যেমন: ৩ বেডরুম, স্কুলের কাছে, গ্যারেজ সহ..."></textarea>
+      </div>
+
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+      <span class="spinner" id="spinner"></span>
+      <span id="btnText">✨ ফ্রি কনসালটেশন পান</span>
+    </button>
+
+    <p class="privacy-note">
+      🔒 আপনার তথ্য সম্পূর্ণ সুরক্ষিত। <span>তৃতীয় পক্ষের সাথে শেয়ার করা হবে না।</span>
+    </p>
+  </div>
+
+  <!-- Success -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✅</div>
+    <h2>ধন্যবাদ!</h2>
+    <p>আপনার তথ্য সফলভাবে জমা হয়েছে।<br>আমাদের টিম শীঘ্রই আপনার সাথে<br>যোগাযোগ করবে।</p>
+    <button class="new-btn" onclick="resetForm()">← নতুন আবেদন করুন</button>
+  </div>
+
+</div>
+
+<script>
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbwKZAPK2MiJhrZst4R-abqmyYf6DJfmOwFZRTOnYkVwQ03YoEMx8SC6tFQOw_kbekM/exec";
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+  }
+
+  function getChecked() {
+    return [...document.querySelectorAll('#propTypes .checkbox-item.checked')]
+      .map(el => el.getAttribute('data-value')).join(', ');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  function setLoading(yes) {
+    document.getElementById('submitBtn').disabled = yes;
+    document.getElementById('spinner').style.display = yes ? 'block' : 'none';
+    document.getElementById('btnText').textContent = yes ? 'পাঠানো হচ্ছে...' : '✨ ফ্রি কনসালটেশন পান';
+  }
+
+  async function submitForm() {
+    const name     = document.getElementById('name').value.trim();
+    const phone    = document.getElementById('phone').value.trim();
+    const district = document.getElementById('district').value;
+    const area     = document.getElementById('area').value.trim();
+    const propType = getChecked();
+    const purpose  = document.getElementById('purpose').value;
+    const budget   = document.getElementById('budget').value;
+    const message  = document.getElementById('message').value.trim();
+
+    if (!name)                       { showToast('⚠️ নাম দিন'); return; }
+    if (!phone || phone.length < 11) { showToast('⚠️ সঠিক ফোন নম্বর দিন'); return; }
+    if (!district)                   { showToast('⚠️ জেলা বেছে নিন'); return; }
+    if (!propType)                   { showToast('⚠️ সম্পত্তির ধরন বেছে নিন'); return; }
+    if (!purpose)                    { showToast('⚠️ উদ্দেশ্য বেছে নিন'); return; }
+
+    setLoading(true);
+
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, district, area, propType, purpose, budget, message })
+      });
+
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      showToast('❌ সমস্যা হয়েছে, আবার চেষ্টা করুন');
+      setLoading(false);
+    }
+  }
+
+  function resetForm() {
+    document.getElementById('formCard').style.display = 'block';
+    document.getElementById('successScreen').style.display = 'none';
+    ['name','phone','area','message'].forEach(id => document.getElementById(id).value = '');
+    ['district','purpose','budget'].forEach(id => document.getElementById(id).value = '');
+    document.querySelectorAll('.checkbox-item.checked').forEach(el => el.classList.remove('checked'));
+    setLoading(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
