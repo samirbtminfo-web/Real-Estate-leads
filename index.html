@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dream Lands রিয়েল এস্টেট - ফ্রি কনসালটেশন</title>
+<title>Dream Lands Real Estate - ফ্রি কনসালটেশন</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -305,24 +305,24 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="badge">🏠 Dream Lands রিয়েল এস্টেট লিড ফর্ম</div>
+    <div class="badge">🏢 Dream Lands <br> A sister concern of <br> Pushpodhara Properties LTD </div>
     <h1>আপনার স্বপ্নের<br><span>সম্পত্তি খুঁজুন</span></h1>
-    <p class="subtitle">ফ্রি কনসালটেশন পান। আমাদের বিশেষজ্ঞ দল আপনার বাজেট ও পছন্দ অনুযায়ী সেরা অপশন দেখাবে।</p>
+    <p class="subtitle">ফ্রি কনসালটেশন পান। আমাদের এক্সপার্ট টিম আপনার বাজেট ও পছন্দ অনুযায়ী টপ রেটেড প্রজেক্ট গুলো সম্পর্কে বিস্তারিত জানাবে।</p>
   </div>
 
   <!-- Features -->
   <div class="features">
     <div class="feature-item">
-      <div class="feature-icon">🎯</div>
-      <div class="feature-text"><strong>১০০% ফ্রি</strong>কোনো চার্জ নেই</div>
+      <div class="feature-icon">🙌 </div>
+      <div class="feature-text"><strong>১০০% ফ্রি কনসালটেশন </strong>কোনো চার্জ নেই</div>
     </div>
     <div class="feature-item">
       <div class="feature-icon">⚡</div>
-      <div class="feature-text"><strong>দ্রুত রেসপন্স</strong>২৪ ঘণ্টার মধ্যে</div>
+      <div class="feature-text"><strong>দ্রুত রেসপন্স</strong>কিছু সময়ের মধ্যেই </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon">🔒</div>
-      <div class="feature-text"><strong>সম্পূর্ণ সুরক্ষিত</strong>তথ্য গোপন থাকবে</div>
+      <div class="feature-icon">🚙</div>
+      <div class="feature-text"><strong>সাইট ভিজিট রেজিষ্ট্রেশন </strong>যেকোনো দিন, যেকোনো সাইট</div>
     </div>
   </div>
 
@@ -344,7 +344,7 @@
 
       <div class="row">
         <div class="field">
-          <label>জেলা <span class="req">*</span></label>
+          <label>আপনার জেলা <span class="req">*</span></label>
           <select id="district">
             <option value="">জেলা বেছে নিন</option>
             <option>ঢাকা</option><option>চট্টগ্রাম</option><option>সিলেট</option>
@@ -354,7 +354,7 @@
           </select>
         </div>
         <div class="field">
-          <label>এলাকা</label>
+          <label>আপনার এলাকা</label>
           <input type="text" id="area" placeholder="যেমন: গুলশান, ধানমন্ডি" />
         </div>
       </div>
@@ -376,13 +376,37 @@
           </div>
         </div>
       </div>
+     
+<div class="field">
+        <label>আমাদের কোন কোন প্রিমিয়াম প্রজেক্ট সম্পর্কে বিস্তারিত জানতে চাচ্ছেন? <span class="req">*</span></label>
+        <div class="checkbox-group" id="propTypes">
+         
+          <div class="checkbox-item" data-value="দি বে আইকন" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>৫ তারকা হোটেল এন্ড রিসোর্ট</span>
+          </div>
+         
+          <div class="checkbox-item" data-value="পুষ্প ইকো সিটি" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span> 🍃পুষ্প ইকো সিটি</span>
+          </div>
+         
+          <div class="checkbox-item" data-value="ঢাকা ওয়েস্টার্ণ ভ্যালি" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>🏙️ ঢাকা ওয়েস্টার্ণ ভ্যা্লি</span>
+          </div>
+         
+          <div class="checkbox-item" data-value="দি ইম্পেরিয়াম ইস্কাটন" onclick="toggleCheck(this)">
+            <span class="check-icon">✓</span><span>🏤 দি ইম্পেরিয়াম ইস্কাটন</span>
+          </div>
+         
+        </div>
+      </div>
 
+     
       <div class="field">
         <label>উদ্দেশ্য <span class="req">*</span></label>
         <select id="purpose">
           <option value="">উদ্দেশ্য বেছে নিন</option>
           <option>কেনা (Buy)</option>
-          <option>ভাড়া নেওয়া (Rent)</option>
+          <option>রিয়েল স্টেট ব্যাবসা (Real Estate Business) </option>
           <option>বিনিয়োগ (Investment)</option>
         </select>
       </div>
@@ -405,15 +429,20 @@
         <textarea id="message" placeholder="যেমন: ৩ বেডরুম, স্কুলের কাছে, গ্যারেজ সহ..."></textarea>
       </div>
 
+      <div class="field">
+        <label>রেফার</label>
+        <textarea id="message" placeholder="রেফার কোড"></textarea>
+      </div>
+
     </div>
 
     <button class="submit-btn" id="submitBtn" onclick="submitForm()">
       <span class="spinner" id="spinner"></span>
-      <span id="btnText">📞 ফ্রি কনসালটেশন পান</span>
+      <span id="btnText">☎️ ফ্রি কনসালটেশন পান</span>
     </button>
 
     <p class="privacy-note">
-      🔒 আপনার তথ্য আমাদের কাছে খুবই গুরুত্বপূর্ন তাই সকল তথ্যের গোপনীয়তা রক্ষার দায়িত্ব একান্তই আমাদের । <span>তৃতীয় পক্ষের সাথে শেয়ার করা হবে না।</span>
+      🔐 আপনার তথ্য আমাদের কাছে খুবই গুরুত্বপূর্ন তাই সকল তথ্যের গোপনীয়তা রক্ষার দায়িত্ব একান্তই আমাদের । <span>তৃতীয় পক্ষের সাথে শেয়ার করা হবে না।</span>
     </p>
   </div>
 
